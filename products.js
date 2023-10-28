@@ -1,7 +1,12 @@
 const products = [
   {
     name: 'Bronson Automatic Brown Eco Leather Watch',
-    images: ['/images/watch5.png'],
+    images: [
+      { url: '/images/watch5.png' },
+      { url: '/images/watch5.png' },
+      { url: '/images/watch5.png' },
+      { url: '/images/watch5.png' },
+    ],
     description:
       'This 44mm Bronson features a black satin dial, automatic movement and brown eco leather strap.',
     category: 'Women',
@@ -24,7 +29,12 @@ const products = [
   },
   {
     name: 'Raquel Three-Hand Date Gold-Tone Stainless Steel Watch',
-    images: ['/images/watch6.png'],
+    images: [
+      { url: '/images/watch6.png' },
+      { url: '/images/watch6.png' },
+      { url: '/images/watch6.png' },
+      { url: '/images/watch6.png' },
+    ],
     description:
       'This 44mm Bronson features a black satin dial, automatic movement and brown eco leather strap.',
     category: 'Women',
@@ -47,7 +57,12 @@ const products = [
   },
   {
     name: 'Modern Sophisticate Three-Hand Rose Gold-Tone Stainless Steel Watch',
-    images: ['/images/watch1.png'],
+    images: [
+      { url: '/images/watch1.png' },
+      { url: '/images/watch1.png' },
+      { url: '/images/watch1.png' },
+      { url: '/images/watch1.png' },
+    ],
     description:
       'This 44mm Bronson features a black satin dial, automatic movement and brown eco leather strap.',
     category: 'Women',
@@ -70,7 +85,12 @@ const products = [
   },
   {
     name: 'Carlie Mini Three-Hand Stainless Steel Watch',
-    images: ['/images/watch2.png'],
+    images: [
+      { url: '/images/watch2.png' },
+      { url: '/images/watch2.png' },
+      { url: '/images/watch2.png' },
+      { url: '/images/watch2.png' },
+    ],
     description:
       'This 44mm Bronson features a black satin dial, automatic movement and brown eco leather strap.',
     category: 'Women',
@@ -93,7 +113,12 @@ const products = [
   },
   {
     name: 'Hybrid Smartwatch HR Monroe Two-Tone Stainless Steel',
-    images: ['/images/watch3.png'],
+    images: [
+      { url: '/images/watch3.png' },
+      { url: '/images/watch3.png' },
+      { url: '/images/watch3.png' },
+      { url: '/images/watch3.png' },
+    ],
     description:
       'This 44mm Bronson features a black satin dial, automatic movement and brown eco leather strap.',
     category: 'Women',
@@ -116,7 +141,12 @@ const products = [
   },
   {
     name: 'Jacqueline Three-Hand Date Rose Gold-Tone Stainless Steel Watch',
-    images: ['/images/watch6.png'],
+    images: [
+      { url: '/images/watch6.png' },
+      { url: '/images/watch6.png' },
+      { url: '/images/watch6.png' },
+      { url: '/images/watch6.png' },
+    ],
     description:
       'This 44mm Bronson features a black satin dial, automatic movement and brown eco leather strap.',
     category: 'Women',
@@ -139,7 +169,12 @@ const products = [
   },
   {
     name: 'Scarlette Three-Hand Day-Date Stainless Steel Watch',
-    images: ['/images/watch5.png'],
+    images: [
+      { url: '/images/watch5.png' },
+      { url: '/images/watch5.png' },
+      { url: '/images/watch5.png' },
+      { url: '/images/watch5.png' },
+    ],
     description:
       'This 44mm Bronson features a black satin dial, automatic movement and brown eco leather strap.',
     category: 'Women',
@@ -162,7 +197,12 @@ const products = [
   },
   {
     name: 'Bronson Automatic Brown Eco Leather Watch',
-    images: ['/images/watch4.png'],
+    images: [
+      { url: '/images/watch4.png' },
+      { url: '/images/watch4.png' },
+      { url: '/images/watch4.png' },
+      { url: '/images/watch4.png' },
+    ],
     description:
       'This 44mm Bronson features a black satin dial, automatic movement and brown eco leather strap.',
     category: 'Women',
