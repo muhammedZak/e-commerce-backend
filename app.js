@@ -10,6 +10,7 @@ const productRouter = require('./routes/productRoutes');
 const userRouter = require('./routes/userRoutes');
 const orderRouter = require('./routes/orderRoutes');
 const uploadRouter = require('./routes/uploadRoutes');
+const stripeRouter = require('./routes/stripeRoutes');
 
 const app = express();
 app.use(cors());
@@ -30,6 +31,7 @@ app.use(express.static('public'));
 app.use('/api/products', productRouter);
 app.use('/api/users', userRouter);
 app.use('/api/orders', orderRouter);
+app.use('/api/payments', stripeRouter);
 app.use('/api/upload', uploadRouter);
 
 app.get('/api/config/paypal', (req, res) =>

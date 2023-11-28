@@ -4,6 +4,7 @@ const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 const { calcPrices } = require('../utils/calcPrices');
 
+
 // creating order
 
 exports.addOrderItems = catchAsync(async (req, res, next) => {
@@ -72,6 +73,8 @@ exports.getOrderById = catchAsync(async (req, res, next) => {
 
 exports.updateOrderToPaid = catchAsync(async (req, res, next) => {
   const order = await Order.findById(req.params.id);
+
+  console.log(req.body);
 
   if (order) {
     order.isPaid = true;
