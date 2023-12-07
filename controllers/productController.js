@@ -3,22 +3,42 @@ const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
 exports.getProducts = catchAsync(async (req, res, next) => {
-  // const queryObj = { ...req.query };
-  // const excludedFields = ['page', 'sort', 'limit', 'fields'];
-
-  // excludedFields.forEach((el) => delete queryObj[el]);
+  const { pageNumber, keyword, filter, attr, minPrice, maxPrice } = req.query;
 
   const pageSize = 8;
-  const page = Number(req.query.pageNumber) || 1;
+  const page = Number(pageNumber) || 1;
 
-  const keyword = req.query.keyword
-    ? { name: { $regex: req.query.keyword, $options: 'i' } }
+  const search = keyword ? { name: { $regex: keyword, $options: 'i' } } : {};
+  const category = filter ? { category: filter } : {};
+
+  const material = attr ? JSON.parse(decodeURIComponent(attr)) : [];
+
+  const attributes = material.length
+    ? { 'productDetails.value': material.map((item) => item.value) }
     : {};
-  const filter = req.query.filter ? { category: req.query.filter } : {};
 
-  const count = await Product.countDocuments({ ...keyword, ...filter });
+  const priceRange = {};
+  if (minPrice && maxPrice) {
+    priceRange.price = { $gte: minPrice, $lte: maxPrice };
+  } else if (minPrice) {
+    priceRange.price = { $gte: minPrice };
+  } else if (maxPrice) {
+    priceRange.price = { $lte: maxPrice };
+  }
 
-  const products = await Product.find({ ...keyword, ...filter })
+  const count = await Product.countDocuments({
+    ...search,
+    ...category,
+    ...attributes,
+    ...priceRange,
+  });
+
+  const products = await Product.find({
+    ...search,
+    ...category,
+    ...attributes,
+    ...priceRange,
+  })
     .limit(pageSize)
     .skip(pageSize * (page - 1));
 
