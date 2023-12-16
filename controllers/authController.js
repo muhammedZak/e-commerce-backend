@@ -1,5 +1,7 @@
 const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
+const { OAuth2Client } = require('google-auth-library');
+
 const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
@@ -12,6 +14,7 @@ const signToken = (id) => {
 
 const createSendToken = (userId, res) => {
   const token = signToken(userId);
+
   const cookieOptions = {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
@@ -45,6 +48,47 @@ exports.signup = catchAsync(async (req, res, next) => {
     name: newUser.name,
     email: newUser.email,
     role: newUser.role,
+  });
+});
+
+//google login
+exports.googleLogin = catchAsync(async (req, res, next) => {
+  const { credential } = req.body;
+
+  console.log(credential);
+
+  if (!credential) {
+    return next(new AppError('Login faild', 400));
+  }
+
+  const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+
+  const ticket = await client.verifyIdToken({
+    idToken: credential,
+    audience: process.env.GOOGLE_CLIENT_ID,
+  });
+
+  const payload = ticket.getPayload();
+
+  const { name, email } = payload;
+
+  let user = await User.findOne({ email });
+
+  if (!user) {
+    user = await User.create({
+      name,
+      email,
+    });
+  }
+
+  createSendToken(user._id, res);
+
+  res.status(201).json({
+    status: 'success',
+    _id: user._id,
+    name: user.name,
+    email: user.email,
+    role: user.role,
   });
 });
 
