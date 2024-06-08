@@ -13,7 +13,7 @@ const uploadRouter = require('./routes/uploadRoutes');
 const stripeRouter = require('./routes/stripeRoutes');
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: 'https://e-commerce-frontent.vercel.app/' }));
 
 // Development logging
 if (process.env.NODE_ENV === 'development') {
