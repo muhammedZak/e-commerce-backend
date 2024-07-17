@@ -30,6 +30,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static('public'));
 
+app.get('/demo', (req, res) => {
+  res.send('Hello World!');
+});
+
 // Routes
 app.use('/api/products', productRouter);
 app.use('/api/users', userRouter);
